@@ -1,0 +1,16 @@
+[Unit]
+Description=A Raspberry Pi Temperature and Humidity Monitor
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/weather_app
+Environment=FLASK_APP=server.py
+Environment=FLASK_ENV=production
+ExecStart=/usr/bin/flask run --host=0.0.0.0
+StandardOutput=inherit
+StandardError=inherit
+Restart=on-failure
+User=pi
+
+[Install]
+WantedBy=multi-user.target
