@@ -27,10 +27,10 @@ with open(logfile, "a") as log:
 # writing the new image on the disk
 df = pd.read_csv(logfile)
 fig = plt.figure(num=None, figsize=(20, 10), dpi=200, facecolor='w', edgecolor='k')
-j
+
 # setting font size on the plot
 plt.rcParams.update({'font.size': 22})
-j
+
 # plotting
 plt.plot(df['timestamp'], df['temperature'])
 
