@@ -8,15 +8,17 @@ import matplotlib.pyplot as plt
 DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 15
 
+logfile = "/home/pi/weather_app/logs/log.csv"
+
 # writing the new data in the csv
-with open("/home/pi/weather_app/logs/log.csv", "a") as log:
+with open(logfile, "a") as log:
     humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
     log.write("{},{:.1f}\n".format(strftime("%m-%d %H:%M"), temperature))
     log.close()
 
 
 # writing the new image on the disk
-df = pd.read_csv("/home/pi/weather_app/logs/log.csv")
+df = pd.read_csv(logfile)
 fig = plt.figure(num=None, figsize=(20, 10), dpi=200, facecolor='w', edgecolor='k')
 # setting font size on the plot
 plt.rcParams.update({'font.size': 22})
