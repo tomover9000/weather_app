@@ -1,0 +1,11 @@
+# Pycache
+__pycache__/
+
+# logs
+logs/
+
+# imgaes
+templates/images/
+
+# restart csv bash script
+restart_csv.sh
