@@ -11,7 +11,9 @@ import numpy as np
 # initializing the sensor
 DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 15
-DATA_COUNT = 30 
+# the amount of data that we keep from the past
+# 48 data points means 1 day because i read 2 times an hour
+DATA_COUNT = 48
 
 # defining the logfile path
 logfile = "/home/pi/weather_app/logs/log.csv"
@@ -45,7 +47,7 @@ plt.ylabel('Temperature')
 # setting only a number of ticks on x axis
 # so that they don't overlap
 timestamps = df['timestamp']
-xticks_count = 20
+xticks_count = 15
 
 plt.xticks(np.arange(0, size, size//xticks_count), timestamps[::size//xticks_count])
 # setting labels and axes limits
