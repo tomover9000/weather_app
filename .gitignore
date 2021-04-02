@@ -9,3 +9,7 @@ templates/images/
 
 # restart csv bash script
 restart_csv.sh
+
+#dotfiles
+.*
+!/.gitignore
