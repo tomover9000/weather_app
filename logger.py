@@ -33,7 +33,7 @@ df = df.append(df_toAdd)
 df = df.tail(DATA_COUNT)
 size = len(df.index)
 # fig size
-fig = plt.figure(num=None, figsize=(20, 10), dpi=200, facecolor='w', edgecolor='k')
+fig = plt.figure(num=None, figsize=(20, 10), dpi=100, facecolor='w', edgecolor='k')
 
 # setting font size on the plot
 plt.rcParams.update({'font.size': 22})

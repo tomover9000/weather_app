@@ -48,14 +48,15 @@ h2 {
     color: #AA8600;
     cursor: pointer;
 }
-.center {
+.img {
     display: block;
-    max-width: 98%;
+    max-width: 100%;
     width: auto;
     height: auto;
     display: flex;
-    margin: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
     align-items: center;
+}
+.grid {
+    display: grid;
+    place-items: center;
 }
