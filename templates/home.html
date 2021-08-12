@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperature Monitor PI</title>
     <link rel="stylesheet" type="text/css"
    href="{{ url_for('static', filename='style.css') }}"/>
 </head>
+
 <body>
 <div id="content">
     <h1>Temperature Monitor PI</h1>
+
+    <div class="data-content">
+        <h2>CPU Temperature</h2>
+        <div class="data-row">
+            <div class="data-cell" id="cpu_temp">
+                ...
+            </div>
+        </div>
+    </div>
 
     <div class="data-content">
         <h2>Temperature</h2>
@@ -27,9 +38,11 @@
             </div>
         </div>
     </div>
+
     <div class="data-content">
       <img src="/get_image/history.png" alt="history" class="img"/>
     </div>
+
 </div>
 
 

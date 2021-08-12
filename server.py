@@ -3,6 +3,7 @@ from flask import jsonify
 from flask import render_template
 from flask import url_for
 from flask import send_from_directory
+from gpiozero import CPUTemperature
 import Adafruit_DHT
 from datetime import datetime
 import sys
@@ -22,16 +23,19 @@ with app.test_request_context():
 def api():
     try:
         humidity, temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+        cpu = CPUTemperature()
         return jsonify({
             "temperature": temp,
-            "humidity": humidity
+            "humidity": humidity,
+            "cpu_temp": cpu.temperature
         })
     except TimeoutError:
         with open("logs/errors.txt", 'w') as errors:
             print(str(datetime.now()) + ": Too many requests on the sensor", file=errors)
         return jsonify({
             "temperature": "invalid",
-            "humidity": "invalid"
+            "humidity": "invalid",
+            "cpu_temp": "invalid"
         })
 
 @app.route('/')
