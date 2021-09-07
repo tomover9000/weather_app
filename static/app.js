@@ -14,6 +14,7 @@ function main() {
   }
  
   function update(apiData) {
+    console.log(JSON.stringify(apiData));
     var tempC = document.getElementById("tempC");
     var humidity = document.getElementById("humidity");
     var cpu_temp = document.getElementById("cpu_temp");
@@ -23,5 +24,5 @@ function main() {
     cpu_temp.innerHTML = parseFloat(apiData.cpu_temp).toFixed(2) + "°C";
   }
 
-  getAPIData(); 
+  var run = setInterval(getAPIData, 5000); 
 }
