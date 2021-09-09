@@ -7,6 +7,7 @@ from gpiozero import CPUTemperature
 import Adafruit_DHT
 from datetime import datetime
 import sys
+import pandas as pd
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -40,7 +41,9 @@ def api():
 
 @app.route('/')
 def home():
-    return render_template('./home.html')
+    logfile = "/home/pi/weather_app/logs/log.csv"
+    df = pd.read_csv(logfile)
+    return render_template('./home.html', labels=list(df['timestamp']), values=list(df['temperature']))
 
 @app.route('/get_image/<image_name>')
 def get_image(image_name):

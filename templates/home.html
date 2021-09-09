@@ -6,6 +6,7 @@
     <title>Temperature Monitor PI</title>
     <link rel="stylesheet" type="text/css"
    href="{{ url_for('static', filename='style.css') }}"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -39,9 +40,32 @@
         </div>
     </div>
 
-    <div class="data-content">
-      <img src="/get_image/history.png" alt="history" class="img"/>
+    <div class="graph-content">
+      <canvas id="Chart"></canvas>
+      <script>
+        var ctx = document.getElementById("Chart").getContext("2d");
+        var chart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: {{ labels | safe }},
+            datasets: [
+              {
+                label: "Temp",
+                data: {{ values | safe }},
+                fill: true,
+                borderColor: "rgb(121, 220, 123)",
+                color: "#006902",
+                lineTension: 0.5
+              }
+            ]
+          },
+          options: {
+            responsive: true
+          }
+        });
+      </script>
     </div>
+
 
 </div>
 
