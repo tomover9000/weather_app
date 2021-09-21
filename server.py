@@ -44,11 +44,3 @@ def home():
     logfile = "/home/pi/weather_app/logs/log.csv"
     df = pd.read_csv(logfile)
     return render_template('./home.html', labels=list(df['timestamp']), values=list(df['temperature']))
-
-@app.route('/get_image/<image_name>')
-def get_image(image_name):
-    try:
-        return send_from_directory(app.config["CLIENT_IMAGES"], filename=image_name, as_attachment=True)
-    except FileNotFoundError:
-        abort(404)
-
